@@ -1,0 +1,11 @@
+{
+  "name": "Remix: Remix: Whisper Chat",
+  "description": "A highly private, modern, real-time secure chat application featuring Private Messages, Secure Chat, Secret Talk, Safe Message, Whisper Chat, Lock Chat, and Silent Messages with end-to-end encryption, OTP authentication, and custom identity protection.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

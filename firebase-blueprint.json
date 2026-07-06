@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Represents a chat application user profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "status": { "type": "string" },
+        "online": { "type": "boolean" },
+        "lastSeen": { "type": "string" }
+      },
+      "required": ["id", "email", "displayName"]
+    },
+    "Chat": {
+      "title": "Chat",
+      "description": "Represents a conversation between users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "isGroup": { "type": "boolean" },
+        "name": { "type": "string" },
+        "participantIds": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "createdBy": { "type": "string" },
+        "groupIcon": { "type": "string" },
+        "lastMessageText": { "type": "string" },
+        "lastMessageSenderId": { "type": "string" },
+        "lastMessageTime": { "type": "string" }
+      },
+      "required": ["id", "isGroup", "participantIds"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Represents a chat message within a conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "type": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileSize": { "type": "number" },
+        "timestamp": { "type": "string" },
+        "readBy": { "type": "array" },
+        "voiceDuration": { "type": "number" }
+      },
+      "required": ["id", "senderId", "text", "timestamp"]
+    },
+    "Call": {
+      "title": "CallSession",
+      "description": "Represents an active call session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "callerId": { "type": "string" },
+        "callerName": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "type": { "type": "string" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "callerId", "receiverId", "type", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "A user profile"
+    },
+    "/chats/{chatId}": {
+      "schema": "Chat",
+      "description": "A chat conversation metadata"
+    },
+    "/chats/{chatId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Messages inside a chat conversation"
+    },
+    "/calls/{callId}": {
+      "schema": "Call",
+      "description": "Active audio/video calls"
+    }
+  }
+}
